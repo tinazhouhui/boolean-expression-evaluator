@@ -1,5 +1,5 @@
 import {describe, test} from '@jest/globals';
-import {Constant} from '../../evaluator/Constant';
+import {Constant} from '../../../evaluator/constants/Constant';
 
 describe('Constant', () => {
     test('Should evaluate AND to falsy if given false and true', () => {

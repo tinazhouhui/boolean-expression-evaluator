@@ -1,7 +1,7 @@
-import {Or} from './Or';
-import {And} from './And';
-import {Constant} from './Constant';
-import {Argument} from './Argument';
+import {Or} from './operations/Or';
+import {And} from './operations/And';
+import {Constant} from './constants/Constant';
+import {Argument} from './constants/Argument';
 import {Node} from './Node';
 
 export function factory(): Node {

@@ -1,6 +1,6 @@
 import {describe, test} from '@jest/globals';
-import {And} from '../../evaluator/And';
-import {Constant} from '../../evaluator/Constant';
+import {And} from '../../../evaluator/operations/And';
+import {Constant} from '../../../evaluator/constants/Constant';
 
 describe('AND operation', () => {
     const falseConst = new Constant(false);
