@@ -1,23 +1,21 @@
 import {Node} from '../Node';
 import ConstantComp from '../../components/constants/ConstantComp'
-import AddNode from '../../components/AddNode';
 
 export class Constant extends Node {
-    constructor(protected readonly value: boolean | undefined) {
+    constructor(protected readonly value: boolean) {
         super();
     }
     evaluate () {
-        if (this.value !== undefined) return this.value;
-        throw new Error ('please select all properties')
+        return this.value;
     }
 
     toString(): string {
-        if (this.value !== undefined) return this.value ? 'true': 'false';
-        throw new Error ('please select all properties')
+        return this.value ? 'true': 'false';
+
     }
 
     createComponent(): JSX.Element {
-        if (this.value !== undefined) return ConstantComp(this.value)
-        return AddNode()
+       return ConstantComp(this.value)
+
     }
 }
