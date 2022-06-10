@@ -1,4 +1,5 @@
 import {Operation} from './Operation';
+import OrComp from '../../components/operations/OrComp';
 
 export class Or extends Operation {
     evaluate() {
@@ -7,5 +8,12 @@ export class Or extends Operation {
 
     toString(): string {
         return `(${this.left.toString()} or ${this.right.toString()})`;
+    }
+
+    createComponent(): JSX.Element {
+        return OrComp({
+            left: this.left.createComponent(),
+            right: this.right.createComponent()
+        })
     }
 }

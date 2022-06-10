@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import {factory} from './evaluator/factory';
+import AddNode from './components/AddNode';
 
 type Args = { [argname: string]: boolean };
 type Operation = any; /* ...todo:
@@ -31,7 +32,7 @@ function OperationBuilder(operations: string[]): JSX.Element[] {
     }
 
     const constant: JSX.Element = (
-        <div style={{display: 'flex'}}>
+        <div style={{display: 'inline'}}>
             <select name="constant" id="constant">
                 <option value="true">true</option>
                 <option value="false">false</option>
@@ -89,18 +90,7 @@ export default function App() {
     return (
         <div>
             <div>
-                <button onClick={() => {
-                    handleNew('constant')
-                }}>Add constant
-                </button>
-                <button onClick={() => {
-                    handleNew('argument')
-                }}>Add argument
-                </button>
-                <button onClick={() => {
-                    handleNew('operation')
-                }}>Add operation
-                </button>
+                <AddNode handleNew={handleNew}/>
             </div>
             <div style={{display: 'flex', flexDirection: 'column'}}>
                 {OperationBuilder(operations)}
@@ -111,9 +101,9 @@ export default function App() {
             <p>
                 result: {node.evaluate() ? 'true' : 'false'}
             </p>
-            {/*<p>*/}
-            {/*    react tree: {node.createComponent()}*/}
-            {/*</p>*/}
+            <p>
+                react tree: {node.createComponent()}
+            </p>
 
             {/* todo: use <OperationBuilder> and have an interface
       for entering arguments and seeing the result */}
