@@ -26,68 +26,14 @@ function evaluateOperation(operation: Operation, args: Args): boolean {
 // }
 
 
-function OperationBuilder(operations: string[]): JSX.Element[] {
-    function handleDelete() {
-
-    }
-
-    const constant: JSX.Element = (
-        <div style={{display: 'inline'}}>
-            <select name="constant" id="constant">
-                <option value="true">true</option>
-                <option value="false">false</option>
-            </select>
-            <button onClick={() => {
-                handleDelete()
-            }}>X
-            </button>
-        </div>
-    )
-
-    const argument: JSX.Element = (
-        <div style={{display: 'flex'}}>
-            <select name="argument" id="argument">
-                <option value="true">Argument1</option>
-                <option value="false">Argument2</option>
-            </select>
-            <button>X</button>
-        </div>
-    )
-
-    const operation: JSX.Element = (
-        <div style={{display: 'flex'}}>
-            <select name="operation" id="operation">
-                <option value="and">And</option>
-                <option value="or">Or</option>
-            </select>
-            <button>X</button>
-        </div>
-    )
-
-    const elements: { [key: string]: JSX.Element } = {constant, argument, operation}
-
-    /* ...todo: an ugly gui for creating operations */
-    const output = []
-    for (const operation of operations) {
-        output.push(elements[operation])
-    }
-
-    return output
-}
+// function OperationBuilder(operations: string[]): JSX.Element[] {
+//     /* ...todo: an ugly gui for creating operations */
+// }
 
 export default function App() {
-    const [operations, setOperation] = useState<string[]>([])
-
-
-    function handleNew(value: string) {
-        setOperation(prev => {
-            return [...prev, value]
-        })
-    }
-
     const node = factory()
 
-    function evalOutput (): string {
+    function evalOutput(): string {
         try {
             return node.evaluate() ? 'true' : 'false'
         } catch (err: any) {
@@ -95,19 +41,24 @@ export default function App() {
         }
     }
 
-    function evalString (): string {
+    function evalString(): string {
         try {
             return node.toString()
         } catch (err: any) {
-           return err.message
+            return err.message
+        }
+    }
+
+    function evalTree(): JSX.Element {
+        try {
+            return node.createComponent()
+        } catch (err: any) {
+            return AddNode()
         }
     }
 
     return (
         <div>
-            <div style={{display: 'flex', flexDirection: 'column'}}>
-                {OperationBuilder(operations)}
-            </div>
             <p>
                 expression: {evalString()}
             </p>
