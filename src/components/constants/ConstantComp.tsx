@@ -1,12 +1,19 @@
-import React from 'react';
+import React, {useState} from 'react';
+import AddNode from '../AddNode';
 
-function ConstantComp(value: boolean): JSX.Element {
+function ConstantComp(value: boolean | undefined): JSX.Element {
+    const constSelector = (
+        <select name="constant" id="constant" defaultValue={String(value)}>
+            <option value="true" >true</option>
+            <option value="false" >false</option>
+        </select>
+    )
+
+    console.log('ConstantComp', value)
+
     return (
         <div style={{display: 'inline'}}>
-            <select name="constant" id="constant">
-                <option value="true" selected={value}>true</option>
-                <option value="false" selected={!value}>false</option>
-            </select>
+            {value !== undefined ? constSelector : <AddNode/> }
         </div>
     );
 }

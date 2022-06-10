@@ -2,7 +2,7 @@ import {Constant} from './Constant';
 import ArgumentComp from '../../components/constants/ArgumentComp';
 
 export class Argument extends Constant {
-    constructor(value: boolean, private readonly name: string) {
+    constructor(value: boolean | undefined, private readonly name: string | undefined = undefined) {
         super(value);
     }
 

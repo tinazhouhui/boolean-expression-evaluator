@@ -1,7 +1,8 @@
 import React from 'react';
 
 interface IProps {
-    left: JSX.Element, right: JSX.Element
+    left: JSX.Element | undefined,
+    right: JSX.Element | undefined
 }
 
 function AndComp(props: IProps) {

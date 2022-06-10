@@ -87,11 +87,16 @@ export default function App() {
 
     const node = factory()
 
+    function evalOutput (): string {
+        try {
+            return node.evaluate() ? 'true' : 'false'
+        } catch (err: any) {
+            return err.message
+        }
+    }
+
     return (
         <div>
-            <div>
-                <AddNode handleNew={handleNew}/>
-            </div>
             <div style={{display: 'flex', flexDirection: 'column'}}>
                 {OperationBuilder(operations)}
             </div>
@@ -99,11 +104,11 @@ export default function App() {
                 expression: {node.toString()}
             </p>
             <p>
-                result: {node.evaluate() ? 'true' : 'false'}
+                result: {evalOutput()}
             </p>
-            <p>
+            <div>
                 react tree: {node.createComponent()}
-            </p>
+            </div>
 
             {/* todo: use <OperationBuilder> and have an interface
       for entering arguments and seeing the result */}

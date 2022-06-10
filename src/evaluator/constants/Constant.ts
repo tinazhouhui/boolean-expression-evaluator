@@ -2,11 +2,12 @@ import {Node} from '../Node';
 import ConstantComp from '../../components/constants/ConstantComp'
 
 export class Constant extends Node {
-    constructor(protected readonly value: boolean) {
+    constructor(protected readonly value: boolean | undefined) {
         super();
     }
     evaluate () {
-        return this.value;
+        if (this.value) return this.value;
+        throw new Error ('please select all properties')
     }
 
     toString(): string {

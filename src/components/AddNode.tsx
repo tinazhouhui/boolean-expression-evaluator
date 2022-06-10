@@ -1,25 +1,28 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 interface IProps {
-    handleNew: (nodeType: string) => void
+
 }
 
 function AddNode(props: IProps) {
-    const {handleNew} = props;
+    const selector = (
+        <>
+            <button onClick={() => setIsFolded(false)}>x</button>
+            <select>
+                <option>Constant</option>
+                <option>Argument</option>
+                <option>And</option>
+                <option>Or</option>
+            </select>
+        </>
+    )
+
+    const [isFolded, setIsFolded] = useState(false)
+
     return (
-        <div>
-            <button onClick={() => {
-                handleNew('constant');
-            }}>Add constant
-            </button>
-            <button onClick={() => {
-                handleNew('argument');
-            }}>Add argument
-            </button>
-            <button onClick={() => {
-                handleNew('operation');
-            }}>Add operation
-            </button>
+        <div style={{display: 'inline'}}>
+            {isFolded ? selector :
+                <button onClick={() => setIsFolded(true)}>+</button>}
         </div>
     );
 }

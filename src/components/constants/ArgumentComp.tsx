@@ -1,13 +1,14 @@
 import React from 'react';
 
-function ArgumentComp(props: {
-    value: JSX.Element,
-    name: string,
-}) {
+interface IProps {
+    value: JSX.Element | undefined,
+    name: string | undefined,
+}
 
-    const {name, value} = props
+function ArgumentComp(props: IProps) {
+
     return (
-        <div style={{display: 'inline'}} >{name}: {value}</div>
+        <div style={{display: 'inline'}}>{props.name} {props.value}</div>
     );
 }
 
