@@ -9,10 +9,10 @@ describe('AND operation', () => {
     test('Should evaluate AND to falsy if given false and true', () => {
         const and = new And(falseConst, trueConst)
         expect(and.evaluate()).toBeFalsy();
-    })
+    });
 
     test('Should evaluate AND to truthy if given true and true', () => {
         const and = new And(trueConst, trueConst)
         expect(and.evaluate()).toBeTruthy();
-    })
-})
+    });
+});
