@@ -1,7 +1,6 @@
-import React, {useState} from 'react';
-import AddNode from '../AddNode';
+import React from 'react';
 
-function ConstantComp(value: boolean | undefined): JSX.Element {
+function ConstantComp(value: boolean): JSX.Element {
     const constSelector = (
         <select name="constant" id="constant" defaultValue={String(value)}>
             <option value="true" >true</option>
@@ -9,11 +8,9 @@ function ConstantComp(value: boolean | undefined): JSX.Element {
         </select>
     )
 
-    console.log('ConstantComp', value)
-
     return (
         <div style={{display: 'inline'}}>
-            {value !== undefined ? constSelector : <AddNode/> }
+            {constSelector}
         </div>
     );
 }

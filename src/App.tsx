@@ -95,13 +95,21 @@ export default function App() {
         }
     }
 
+    function evalString (): string {
+        try {
+            return node.toString()
+        } catch (err: any) {
+           return err.message
+        }
+    }
+
     return (
         <div>
             <div style={{display: 'flex', flexDirection: 'column'}}>
                 {OperationBuilder(operations)}
             </div>
             <p>
-                expression: {node.toString()}
+                expression: {evalString()}
             </p>
             <p>
                 result: {evalOutput()}

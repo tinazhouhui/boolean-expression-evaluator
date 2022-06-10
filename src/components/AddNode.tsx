@@ -1,11 +1,8 @@
 import React, {useState} from 'react';
 import {AND, ARGUMENT, CONSTANT, OR} from '../constants';
 
-interface IProps {
 
-}
-
-function AddNode(props: IProps) {
+function AddNode() {
     const selector = (
         <>
             <button onClick={() => setIsFolded(false)}>x</button>
