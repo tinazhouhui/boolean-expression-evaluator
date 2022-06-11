@@ -25,9 +25,10 @@ type TOr = {
 }
 
 export function factory(leaf: any): Node {
+    if (typeof leaf === 'undefined') return new Undefined();
     if (typeof leaf === 'boolean') return new Constant(leaf);
 
-    const keys = Object.keys(leaf)
+    const keys = Object.keys(leaf);
     // for arguments
     //todo get rid of tsignore
     if (keys.includes('name') && keys.includes('value')) {
@@ -44,5 +45,6 @@ export function factory(leaf: any): Node {
         return new Or(factory(leaf.or.left), factory(leaf.or.right))
     }
 
+    // todo throw error??
     return new Undefined();
 }

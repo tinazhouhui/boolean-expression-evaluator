@@ -43,4 +43,24 @@ describe('factory', () => {
     expect(evaluator.evaluate()).toBeTruthy();
   });
 
+  test('Should throw an error for incomplete expression', () => {
+    const incompleteExpression = {
+      or: {
+        left: {
+          and: {
+            left: undefined,
+            right: {
+              value: true,
+              name: 'Bob'
+            }
+          }
+        },
+        right: false,
+      }
+    }
+
+    const evaluator = factory(incompleteExpression)
+    expect(() => {evaluator.evaluate()}).toThrow('please select all properties');
+  });
+
 });
