@@ -7,12 +7,12 @@ describe('Or operation', () => {
   const trueConst = new Constant(true);
 
   test('Should evaluate OR to truthy if given false and true', () => {
-    const or = new Or(falseConst, trueConst)
+    const or = new Or(falseConst, trueConst);
     expect(or.evaluate()).toBeTruthy();
-  })
+  });
 
   test('Should evaluate OR to falsy if given false and false', () => {
-    const or = new Or(falseConst, falseConst)
+    const or = new Or(falseConst, falseConst);
     expect(or.evaluate()).toBeFalsy();
   });
 });
