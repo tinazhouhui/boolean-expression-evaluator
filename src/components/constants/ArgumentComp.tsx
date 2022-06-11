@@ -1,8 +1,8 @@
 import React from 'react';
 
 interface IProps {
-    value: JSX.Element | undefined,
-    name: string | undefined,
+    value: JSX.Element,
+    name: string,
 }
 
 function ArgumentComp(props: IProps) {
