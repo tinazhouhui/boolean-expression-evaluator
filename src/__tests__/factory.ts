@@ -17,9 +17,9 @@ describe('factory', () => {
         },
         right: false,
       }
-    }
+    };
 
-    const evaluator = factory(falseExpression)
+    const evaluator = factory(falseExpression);
     expect(evaluator.evaluate()).toBeFalsy();
   });
 
@@ -37,9 +37,9 @@ describe('factory', () => {
         },
         right: false,
       }
-    }
+    };
 
-    const evaluator = factory(trueExpression)
+    const evaluator = factory(trueExpression);
     expect(evaluator.evaluate()).toBeTruthy();
   });
 
@@ -57,10 +57,12 @@ describe('factory', () => {
         },
         right: false,
       }
-    }
+    };
 
-    const evaluator = factory(incompleteExpression)
-    expect(() => {evaluator.evaluate()}).toThrow('please select all properties');
+    const evaluator = factory(incompleteExpression);
+    expect(() => {
+      evaluator.evaluate();
+    }).toThrow('please select all properties');
   });
 
 });
