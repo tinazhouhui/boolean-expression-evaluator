@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
-import {IArgument} from '../../App';
-import Argument from './Argument';
+import {Argument} from '../../evaluator/constants/Argument';
+import DisplayArgument from './DisplayArgument';
+
 
 interface IProps {
-  allArguments: IArgument[]
+  allArguments: Argument[]
 }
 
 class AllArguments extends Component<IProps, any> {
@@ -13,7 +14,7 @@ class AllArguments extends Component<IProps, any> {
     return (
       <div className="my-3">
         <h3>All Arguments</h3>
-        {this.props.allArguments.map((arg: IArgument) => <Argument key={arg.name} argument={arg}/>)}
+        {this.props.allArguments.map((arg: Argument) => <DisplayArgument key={arg.getName()} argument={arg}/>)}
       </div>
     );
   }

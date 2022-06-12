@@ -1,15 +1,15 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {IArgument} from '../../App';
 import AllArguments from './AllArguments';
 import AddArgumentForm from './AddArgumentForm';
+import {Argument} from '../../evaluator/constants/Argument';
 
 interface IProps {
-  allArgs: IArgument[],
-  handleChange: (name: string, value: string) => void,
+  allArgs: Argument[],
   handleNewArg: (newArg: IArgument) => void,
 }
 
-export default class CreateArgument extends React.Component<IProps, any> {
+class CreateArgument extends Component<IProps, any> {
 
   state = {
     showForm: false,
@@ -23,3 +23,5 @@ export default class CreateArgument extends React.Component<IProps, any> {
     </>;
   }
 }
+
+export default CreateArgument;

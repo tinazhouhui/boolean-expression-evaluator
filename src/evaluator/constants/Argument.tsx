@@ -10,6 +10,14 @@ export class Argument extends Constant {
     return this.name;
   }
 
+  getValue() {
+    return this.value;
+  }
+
+  setValue(value: boolean) {
+    this.value = value;
+  }
+
   toString(): string {
     return this.name + ': ' + super.toString();
   }

@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import {IArgument} from '../../App';
+import {Argument} from '../../evaluator/constants/Argument';
 
 interface IProps {
-  allArgs: IArgument[],
-  handleChange: (name: string, value: string) => void,
+  allArgs: Argument[],
   handleNewArg: (newArg: IArgument) => void,
 }
 

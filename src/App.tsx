@@ -5,6 +5,7 @@ import {Node} from './evaluator/Node';
 import {ThemeContext} from './contextIndex';
 import {Undefined} from './evaluator/Undefined';
 import CreateArgument from './components/createArguments/CreateArgument';
+import {Argument} from './evaluator/constants/Argument';
 
 export interface IArgument {
   name: string,
@@ -13,10 +14,10 @@ export interface IArgument {
 
 type State = {
   tree: Node,
-  allArguments: IArgument[]
+  allArguments: Argument[]
 }
 
-export default class App extends React.Component<any, State> {
+class App extends React.Component<any, State> {
   constructor(props: any) {
     super(props);
     this.state = {
@@ -25,25 +26,25 @@ export default class App extends React.Component<any, State> {
     };
   }
 
-  handleChange = (name: string, value: string) => {
-    this.setState((prevState) => {
-      return {
-        ...prevState,
-        allArguments: prevState.allArguments.map((arg: IArgument) => {
-          if (arg.name === name) {
-            arg.value = Boolean(value);
-          }
-          return arg;
-        })
-      };
-    });
-  };
+  // handleChange = (name: string, value: string) => {
+  //   this.setState((prevState) => {
+  //     return {
+  //       ...prevState,
+  //       allArguments: prevState.allArguments.map((arg: Argument) => {
+  //         if (arg.getName() === name) {
+  //           arg.setValue(Boolean(value));
+  //         }
+  //         return arg;
+  //       })
+  //     };
+  //   });
+  // };
 
   handleNewArg = (newArg: IArgument) => {
     this.setState((prevState) => {
       return {
         ...prevState,
-        allArguments: [...prevState.allArguments, newArg]
+        allArguments: [...prevState.allArguments, new Argument(newArg.value, newArg.name)]
       };
     });
   };
@@ -51,7 +52,7 @@ export default class App extends React.Component<any, State> {
   render() {
     const setState = (value: any): any => {
       return this.setState.bind(this)(value);
-    }
+    };
     return <ThemeContext.Provider value={{
       treeState: this.state.tree,
       setTreeState: setState,
@@ -59,10 +60,12 @@ export default class App extends React.Component<any, State> {
     }}>
       <CreateArgument
         allArgs={this.state.allArguments}
-        handleChange={this.handleChange}
         handleNewArg={this.handleNewArg}
       />
       <Tree/>
     </ThemeContext.Provider>;
   }
 }
+
+
+export default App;

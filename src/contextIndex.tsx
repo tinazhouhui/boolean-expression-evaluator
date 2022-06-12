@@ -1,11 +1,11 @@
 import React from 'react';
 import {Node} from './evaluator/Node';
-import {IArgument} from './App';
+import {Argument} from './evaluator/constants/Argument';
 
 export interface IThemeContext {
   treeState: Node;
   setTreeState: (value: any) => undefined | boolean | void,
-  allArguments: IArgument[]
+  allArguments: Argument[]
 }
 
 export const ThemeContext = React.createContext<IThemeContext>({} as IThemeContext);
