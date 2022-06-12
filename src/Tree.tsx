@@ -30,7 +30,7 @@ export default class Tree extends React.Component<any, any> {
 
   render() {
     const {treeState} = this.context as any;
-    console.log({treeState});
+    console.warn('Rendering:', treeState);
     return <>
       <p>
         <strong>Evaluation:</strong> {this.evalOutput(treeState)}

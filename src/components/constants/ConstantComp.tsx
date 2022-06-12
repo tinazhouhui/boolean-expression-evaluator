@@ -38,8 +38,6 @@ export class ConstantComp extends React.Component<Props, any> {
   );
 
   render() {
-    // @ts-ignore
-    console.log(this.context);
     return (
       <span>
       <button onClick={this.removeHandler} className="btn btn-danger btn-sm">x</button>

@@ -1,8 +1,7 @@
 import {Node} from '../Node';
-import {Undefined} from '../Undefined';
 
 export abstract class Operation extends Node {
-  constructor(protected left: Node = new Undefined(), protected right: Node = new Undefined()) {
+  constructor(protected left: Node, protected right: Node) {
     super();
 
     this.setLeft(left);
