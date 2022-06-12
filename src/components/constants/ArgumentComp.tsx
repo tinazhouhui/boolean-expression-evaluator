@@ -1,11 +1,11 @@
-import React from 'react';
+import React, {Component} from 'react';
 
 interface IProps {
   value: JSX.Element,
   name: string,
 }
 
-export class ArgumentComp extends React.Component<IProps, any> {
+class ArgumentComp extends Component<IProps, any> {
   render() {
     return <>
       {this.props.value}

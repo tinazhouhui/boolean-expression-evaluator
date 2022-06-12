@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {And} from '../../evaluator/operations/And';
 
 interface IProps {
@@ -7,9 +7,7 @@ interface IProps {
   me: And
 }
 
-export class AndComp extends React.Component<IProps, any> {
-
-  //console.log(props.me);
+class AndComp extends Component<IProps, any> {
 
   render() {
     const {left, right} = this.props;

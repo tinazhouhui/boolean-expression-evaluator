@@ -1,4 +1,4 @@
-import React, {ChangeEventHandler, Context, MouseEventHandler, useContext} from 'react';
+import React, {ChangeEventHandler, Context, MouseEventHandler, Component} from 'react';
 
 import {Constant} from '../../evaluator/constants/Constant';
 import {IThemeContext, ThemeContext} from '../../contextIndex';
@@ -7,7 +7,7 @@ type Props = {
   me: Constant,
 }
 
-export class ConstantComp extends React.Component<Props, any> {
+class ConstantComp extends Component<Props, any> {
   // const {treeState, setTreeState} = useContext(ThemeContext);
   static contextType: Context<IThemeContext> = ThemeContext;
 

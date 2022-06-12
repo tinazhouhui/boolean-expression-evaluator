@@ -1,11 +1,11 @@
-import React from 'react';
+import React, {Component} from 'react';
 
 interface IProps {
   left: JSX.Element,
   right: JSX.Element
 }
 
-export class OrComp extends React.Component<IProps, any> {
+class OrComp extends Component<IProps, any> {
   render() {
     const {left, right} = this.props;
 

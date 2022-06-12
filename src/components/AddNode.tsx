@@ -1,4 +1,4 @@
-import React, {ChangeEventHandler} from 'react';
+import React, {ChangeEventHandler, Component} from 'react';
 import {AND, ARGUMENT, CONSTANT, OR} from '../constants';
 import {Node} from '../evaluator/Node';
 import {Constant} from '../evaluator/constants/Constant';
@@ -17,7 +17,7 @@ interface State {
   isFolded: boolean;
 }
 
-export class AddNode extends React.Component<IProps, State> {
+class AddNode extends Component<IProps, State> {
   static contextType = ThemeContext;
   state = {
     isFolded: false
