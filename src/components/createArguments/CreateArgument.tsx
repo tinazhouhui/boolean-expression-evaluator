@@ -1,5 +1,6 @@
 import React from 'react';
-import {IArgument} from '../App';
+import {IArgument} from '../../App';
+import AllArguments from './AllArguments';
 
 const initialState = {
   showForm: false,
@@ -18,13 +19,6 @@ interface IProps {
 export default class CreateArgument extends React.Component<IProps, any> {
 
   state = initialState;
-  arguments = [{
-    name: 'arg1',
-    value: true,
-  }, {
-    name: 'arg2',
-    value: false
-  }];
 
   handleSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault()
@@ -59,20 +53,20 @@ export default class CreateArgument extends React.Component<IProps, any> {
           <option value="true">true</option>
           <option value="false">false</option>
         </select>
-        <button onClick={() => this.handleDelete(name)}>x</button>
+        <button onClick={() => this.handleDelete(name)} className="btn btn-danger">x</button>
       </p>
 
     );
   };
 
   render() {
+    const numberOfArgs = this.props.allArgs.length
     return <>
-      <h2>Arguments</h2>
-      {this.props.allArgs.map((arg: any) => this.showSelector(arg.name, arg.value))}
-      {this.state.showForm ? <form onSubmit={this.handleSubmit}>
-        <label>
+      {numberOfArgs > 0 && <AllArguments allArguments={this.props.allArgs}/>}
+      {this.state.showForm ? <form className="my-3" onSubmit={this.handleSubmit}>
+        <label className="form-label">
           Argument name:
-          <input type="text" name="name" value={this.state.argument.name} onChange={this.handeFormChange}/>
+          <input className="form-control" type="text" name="name" value={this.state.argument.name} onChange={this.handeFormChange}/>
         </label>
         <select name="value" defaultValue={String(this.state.argument.value)} onChange={this.handeFormChange}
                 className="form-select"
@@ -80,8 +74,8 @@ export default class CreateArgument extends React.Component<IProps, any> {
           <option value="true">true</option>
           <option value="false">false</option>
         </select>
-        <input type="submit" value="submit"/>
-      </form> : <button onClick={() => this.setState({showForm: true})} className="btn btn-secondary">Add a new argument</button>}
+        <input type="submit" value="submit" className="btn btn-success"/>
+      </form> : <button onClick={() => this.setState({showForm: true})} className="btn btn-secondary my-3">Add a new argument</button>}
     </>;
   }
 }

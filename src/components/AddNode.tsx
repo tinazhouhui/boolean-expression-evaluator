@@ -1,4 +1,4 @@
-import React, {ChangeEventHandler, useContext, useState} from 'react';
+import React, {ChangeEventHandler} from 'react';
 import {AND, ARGUMENT, CONSTANT, OR} from '../constants';
 import {Node} from '../evaluator/Node';
 import {Constant} from '../evaluator/constants/Constant';
@@ -18,15 +18,11 @@ interface State {
 }
 
 export class AddNode extends React.Component<IProps, State> {
-  // const {treeState, setTreeState} = useContext(ThemeContext);
   static contextType = ThemeContext;
   state = {
     isFolded: false
   };
 
-  /**
-   * ToDo: Refactor me!
-   */
   handler: ChangeEventHandler<HTMLSelectElement> = (event) => {
     const {treeState, setTreeState} = this.context as IThemeContext;
     let newNode: Node;
@@ -46,37 +42,36 @@ export class AddNode extends React.Component<IProps, State> {
         newNode = new Constant();
     }
 
-    // console.log('before change', treeState);
-
     const parent = props.me.getParent();
     // operation replacement for AND and OR
     if (parent instanceof Operation) {
       if (props.me === parent.getLeft()) {
         parent.setLeft(newNode);
-        // console.log('after left change', treeState);
       }
 
       if (props.me === parent.getRight()) {
         parent.setRight(newNode);
-        // console.log('after right change state', treeState);
-        // console.log('after right change parent', parent);
       }
-    }
-    else {
+
+      if (Object.is(parent, treeState)) {
+        setTreeState({tree: parent});
+        return;
+      }
+
+      //console.log('my parent after adding new node', parent);
+      //console.log('after change', treeState);
+      //console.log('compare', Object.is(parent, treeState));
+      //console.log('--------------------');
+
+      // https://stackoverflow.com/questions/41474986/how-to-clone-a-javascript-es6-class-instance
+      const copy = Object.assign(Object.create(Object.getPrototypeOf(treeState)), treeState);
+      setTreeState({tree: copy});
+
+    } else {
       // operation replacement for Const and Arg
       setTreeState({tree: newNode});
       return;
     }
-
-    console.log('after change', treeState);
-
-    // https://stackoverflow.com/questions/41474986/how-to-clone-a-javascript-es6-class-instance
-
-    setTreeState((state: any) => {
-      // console.log('prevState', state)
-      const copy = Object.assign(Object.create(Object.getPrototypeOf(treeState)), treeState);
-      return {tree: copy}
-    });
   };
 
 

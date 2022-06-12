@@ -1,10 +1,6 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {Node} from './evaluator/Node';
-import ConstantComp from './components/constants/ConstantComp';
-import {Constant} from './evaluator/constants/Constant';
 import {ThemeContext} from './contextIndex';
-
-
 
 export default class Tree extends React.Component<any, any> {
   static contextType = ThemeContext;
@@ -26,12 +22,10 @@ export default class Tree extends React.Component<any, any> {
     }
   }
 
-  //console.log('rendering tree:', treeState);
-
   render() {
     const {treeState} = this.context as any;
-    console.warn('Rendering:', treeState);
-    return <>
+    return <div className="my-3">
+      <h2>Evaluator</h2>
       <p>
         <strong>Evaluation:</strong> {this.evalOutput(treeState)}
       </p>
@@ -40,8 +34,7 @@ export default class Tree extends React.Component<any, any> {
       </p>
       <p>
         <strong>React tree:</strong> {treeState.createComponent()}
-        {/*<strong>React tree:</strong> <ConstantComp me={new Constant()}/>*/}
       </p>
-    </>;
+    </div>;
   }
 }

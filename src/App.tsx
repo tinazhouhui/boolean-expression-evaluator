@@ -4,7 +4,7 @@ import Tree from './Tree';
 import {Node} from './evaluator/Node';
 import {ThemeContext} from './contextIndex';
 import {Undefined} from './evaluator/Undefined';
-import CreateArgument from './components/CreateArgument';
+import CreateArgument from './components/createArguments/CreateArgument';
 
 export interface IArgument {
   name: string,
@@ -26,7 +26,6 @@ export default class App extends React.Component<any, State> {
   }
 
   handleChange = (name: string, value: string) => {
-    console.log(name, value);
     this.setState((prevState) => {
       return {
         ...prevState,
@@ -51,7 +50,6 @@ export default class App extends React.Component<any, State> {
 
   render() {
     const setState = (value: any): any => {
-      console.log('new state:', value);
       return this.setState.bind(this)(value);
     }
     return <ThemeContext.Provider value={{

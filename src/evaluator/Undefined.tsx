@@ -11,6 +11,6 @@ export class Undefined extends Node {
   }
 
   createComponent(): JSX.Element {
-    return <AddNode me={this}/>
+    return <AddNode me={this}/>;
   }
 }
