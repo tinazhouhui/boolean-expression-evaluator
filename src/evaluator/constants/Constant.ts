@@ -2,8 +2,10 @@ import {Node} from '../Node';
 import ConstantComp from '../../components/constants/ConstantComp';
 
 export class Constant extends Node {
-  constructor(protected readonly value: boolean) {
+  constructor(protected value: boolean = true) {
     super();
+
+    this.value = value;
   }
 
   evaluate() {
@@ -15,8 +17,13 @@ export class Constant extends Node {
 
   }
 
-  createComponent(): JSX.Element {
-    return ConstantComp(this.value);
+  setValue(value: boolean) {
+    this.value = value;
+  }
 
+  createComponent(): JSX.Element {
+    return ConstantComp({
+      me: this,
+    });
   }
 }

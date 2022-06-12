@@ -9,7 +9,7 @@ function AndComp(props: IProps) {
   const {left, right} = props;
 
   return (
-    <div style={{display: 'inline'}}>( {left} OR {right} )</div>
+    <span>( {left} OR {right} )</span>
   );
 }
 

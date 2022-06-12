@@ -7,9 +7,10 @@ interface IProps {
 
 function ArgumentComp(props: IProps) {
 
-  return (
-    <div style={{display: 'inline'}}>{props.name} {props.value}</div>
-  );
+  return <>
+    {props.value}
+    <span className="badge bg-secondary">{props.name}</span>
+  </>;
 }
 
 export default ArgumentComp;

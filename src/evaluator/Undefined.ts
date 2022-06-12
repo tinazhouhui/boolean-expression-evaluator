@@ -1,14 +1,7 @@
 import {Node} from './Node';
 import AddNode from '../components/AddNode';
-import React from 'react';
-
-export type THandleChange = (event: React.ChangeEvent<HTMLSelectElement>) => void
 
 export class Undefined extends Node {
-  constructor(protected readonly handleChange: THandleChange) {
-    super();
-  }
-
   evaluate(): boolean {
     throw new Error('please select all properties');
   }
@@ -18,6 +11,8 @@ export class Undefined extends Node {
   }
 
   createComponent(): JSX.Element {
-    return AddNode({handleChange: this.handleChange});
+    return AddNode({
+      me: this,
+    });
   }
 }

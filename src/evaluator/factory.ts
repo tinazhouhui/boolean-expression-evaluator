@@ -3,7 +3,7 @@ import {And} from './operations/And';
 import {Constant} from './constants/Constant';
 import {Argument} from './constants/Argument';
 import {Node} from './Node';
-import {THandleChange, Undefined} from './Undefined';
+import {Undefined} from './Undefined';
 
 type TConstant = boolean;
 type TArgument = {
@@ -24,10 +24,10 @@ type TOr = {
   or: TOperation
 }
 
-export function factory(leaf: any, handleChange: THandleChange): Node {
+export function factory(leaf: any): Node {
   console.log({leaf});
 
-  if (typeof leaf === 'undefined') return new Undefined(handleChange);
+  if (typeof leaf === 'undefined') return new Undefined();
   if (typeof leaf === 'boolean') return new Constant(leaf);
 
   const keys = Object.keys(leaf);
@@ -39,14 +39,14 @@ export function factory(leaf: any, handleChange: THandleChange): Node {
 
   // for and
   if (keys.includes('and')) {
-    return new And(factory(leaf.and.left, handleChange), factory(leaf.and.right, handleChange));
+    return new And(factory(leaf.and.left), factory(leaf.and.right));
   }
 
   // for or
   if (keys.includes('or')) {
-    return new Or(factory(leaf.or.left, handleChange), factory(leaf.or.right, handleChange));
+    return new Or(factory(leaf.or.left), factory(leaf.or.right));
   }
 
   // todo throw error??
-  return new Undefined(handleChange);
+  return new Undefined();
 }
