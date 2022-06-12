@@ -2,26 +2,22 @@ import React, {ChangeEventHandler, Context, MouseEventHandler, Component} from '
 
 import {Constant} from '../../evaluator/constants/Constant';
 import {IThemeContext, ThemeContext} from '../../contextIndex';
+import stateReducer from '../../stateReducer';
 
 type Props = {
   me: Constant,
 }
 
 class ConstantComp extends Component<Props, any> {
-  // const {treeState, setTreeState} = useContext(ThemeContext);
   static contextType: Context<IThemeContext> = ThemeContext;
 
-  removeHandler: MouseEventHandler<HTMLButtonElement> = (event) => {
-    const {treeState, setTreeState} = this.context as any;
-    // ToDo: Remove
-    console.warn('remove not implemented yet');
-
-    const copy = Object.assign(Object.create(Object.getPrototypeOf(treeState)), treeState);
-    setTreeState(copy);
+  removeHandler: MouseEventHandler<HTMLButtonElement> = () => {
+    const {treeState, setTreeState} = this.context as IThemeContext;
+    stateReducer(this.props.me, treeState, setTreeState);
   };
 
   changeHandler: ChangeEventHandler<HTMLSelectElement> = (event) => {
-    const {treeState, setTreeState} = this.context as any;
+    const {treeState, setTreeState} = this.context as IThemeContext;
     this.props.me.setValue(event.target.value === 'true');
 
     const copy = Object.assign(Object.create(Object.getPrototypeOf(treeState)), treeState);
@@ -38,12 +34,10 @@ class ConstantComp extends Component<Props, any> {
   );
 
   render() {
-    return (
-      <span>
+    return <span>
       <button onClick={this.removeHandler} className="btn btn-danger btn-sm">x</button>
-        {this.constSelector}
-    </span>
-    );
+      {this.constSelector}
+    </span>;
   }
 }
 

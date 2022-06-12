@@ -11,6 +11,6 @@ export class Or extends Operation {
   }
 
   createComponent(): JSX.Element {
-    return <OrComp left={this.left.createComponent()} right={this.right.createComponent()}/>;
+    return <OrComp left={this.left.createComponent()} right={this.right.createComponent()} me={this}/>;
   }
 }

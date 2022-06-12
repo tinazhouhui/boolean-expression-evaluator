@@ -4,7 +4,7 @@ import {Argument} from './evaluator/constants/Argument';
 
 export interface IThemeContext {
   treeState: Node;
-  setTreeState: (value: any) => undefined | boolean | void,
+  setTreeState: (value: {tree:Node}) => undefined | boolean | void,
   allArguments: Argument[]
 }
 
