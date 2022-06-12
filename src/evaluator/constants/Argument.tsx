@@ -1,9 +1,9 @@
-import {Constant} from './Constant';
 import ArgumentComp from '../../components/constants/ArgumentComp';
+import {Node} from '../Node';
 
-export class Argument extends Constant {
-  constructor(value: boolean = true, private readonly name: string = 'New name') {
-    super(value);
+export class Argument extends Node {
+  constructor(protected value: boolean | null = null, private readonly name: string = '') {
+    super();
   }
 
   getName() {
@@ -18,11 +18,18 @@ export class Argument extends Constant {
     this.value = value;
   }
 
+  evaluate(): boolean {
+    if (this.value === null) {
+      throw new Error('Select argument, please');
+    }
+    return this.value;
+  }
+
   toString(): string {
-    return this.name + ': ' + super.toString();
+    return this.name + ': ' + String(this.evaluate());
   }
 
   createComponent(): JSX.Element {
-    return <ArgumentComp value={super.createComponent()} name={this.name}/>;
+    return this.value === null ? <ArgumentComp me={this}/> : <>{this.toString()}</>;
   }
 }

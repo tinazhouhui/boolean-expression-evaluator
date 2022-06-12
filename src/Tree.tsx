@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {Node} from './evaluator/Node';
 import {ThemeContext} from './contextIndex';
 
-export default class Tree extends React.Component<any, any> {
+class Tree extends Component<any, any> {
   static contextType = ThemeContext;
 
   evalOutput(node: Node): JSX.Element {
@@ -38,3 +38,5 @@ export default class Tree extends React.Component<any, any> {
     </div>;
   }
 }
+
+export default Tree;
