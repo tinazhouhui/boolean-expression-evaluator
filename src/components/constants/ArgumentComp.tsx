@@ -5,12 +5,13 @@ interface IProps {
   name: string,
 }
 
-function ArgumentComp(props: IProps) {
-
-  return <>
-    {props.value}
-    <span className="badge bg-secondary">{props.name}</span>
-  </>;
+export class ArgumentComp extends React.Component<IProps, any> {
+  render() {
+    return <>
+      {this.props.value}
+      <span className="badge bg-secondary">{this.props.name}</span>
+    </>;
+  }
 }
 
 export default ArgumentComp;

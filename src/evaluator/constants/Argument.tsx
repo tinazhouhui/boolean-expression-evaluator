@@ -15,6 +15,6 @@ export class Argument extends Constant {
   }
 
   createComponent(): JSX.Element {
-    return ArgumentComp({name: this.name, value: super.createComponent()});
+    return <ArgumentComp value={super.createComponent()} name={this.name}/>;
   }
 }

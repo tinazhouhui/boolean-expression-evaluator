@@ -22,8 +22,6 @@ export class Constant extends Node {
   }
 
   createComponent(): JSX.Element {
-    return ConstantComp({
-      me: this,
-    });
+    return <ConstantComp me={this} />
   }
 }

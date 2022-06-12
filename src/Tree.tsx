@@ -1,19 +1,24 @@
-import {useContext} from 'react';
-import {ThemeContext} from './context';
+import React, {useContext} from 'react';
 import {Node} from './evaluator/Node';
+import ConstantComp from './components/constants/ConstantComp';
+import {Constant} from './evaluator/constants/Constant';
+import {ThemeContext} from './contextIndex';
 
-export function Tree() {
-  const {treeState} = useContext(ThemeContext);
 
-  function evalOutput(node: Node): JSX.Element {
+
+export default class Tree extends React.Component<any, any> {
+  static contextType = ThemeContext;
+
+  evalOutput(node: Node): JSX.Element {
     try {
-      return node.evaluate() ? <span className="badge text-bg-success">true</span> : <span className="badge text-bg-danger">false</span>;
+      return node.evaluate() ? <span className="badge text-bg-success">true</span> :
+        <span className="badge text-bg-danger">false</span>;
     } catch (err: any) {
       return <span className="badge text-bg-warning">{err.message}</span>;
     }
   }
 
-  function evalString(node: Node): string {
+  evalString(node: Node): string {
     try {
       return node.toString();
     } catch (err: any) {
@@ -23,15 +28,20 @@ export function Tree() {
 
   //console.log('rendering tree:', treeState);
 
-  return <>
-    <p>
-      <strong>Evaluation:</strong> {evalOutput(treeState)}
-    </p>
-    <p>
-      <strong>Text:</strong> {evalString(treeState)}
-    </p>
-    <p>
-      <strong>React tree:</strong> {treeState.createComponent()}
-    </p>
-  </>;
+  render() {
+    const {treeState} = this.context as any;
+    console.log({treeState});
+    return <>
+      <p>
+        <strong>Evaluation:</strong> {this.evalOutput(treeState)}
+      </p>
+      <p>
+        <strong>Text:</strong> {this.evalString(treeState)}
+      </p>
+      <p>
+        <strong>React tree:</strong> {treeState.createComponent()}
+        {/*<strong>React tree:</strong> <ConstantComp me={new Constant()}/>*/}
+      </p>
+    </>;
+  }
 }

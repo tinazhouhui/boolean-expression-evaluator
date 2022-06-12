@@ -7,14 +7,16 @@ interface IProps {
   me: And
 }
 
-function AndComp(props: IProps) {
-  const {left, right} = props;
+export class AndComp extends React.Component<IProps, any> {
 
   //console.log(props.me);
 
-  return (
-    <span>( {left} AND {right} )</span>
-  );
+  render() {
+    const {left, right} = this.props;
+    return (
+      <span>( {left} AND {right} )</span>
+    );
+  }
 }
 
 export default AndComp;

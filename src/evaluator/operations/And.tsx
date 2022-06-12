@@ -11,10 +11,6 @@ export class And extends Operation {
   }
 
   createComponent(): JSX.Element {
-    return AndComp({
-      left: this.left.createComponent(),
-      right: this.right.createComponent(),
-      me: this,
-    });
+    return <AndComp left={this.left.createComponent()} right={this.right.createComponent()} me={this}/>;
   }
 }

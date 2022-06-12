@@ -5,12 +5,14 @@ interface IProps {
   right: JSX.Element
 }
 
-function AndComp(props: IProps) {
-  const {left, right} = props;
+export class OrComp extends React.Component<IProps, any> {
+  render() {
+    const {left, right} = this.props;
 
-  return (
-    <span>( {left} OR {right} )</span>
-  );
+    return (
+      <span>( {left} OR {right} )</span>
+    );
+  }
 }
 
-export default AndComp;
+export default OrComp;

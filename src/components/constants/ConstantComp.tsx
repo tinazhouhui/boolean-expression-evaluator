@@ -1,15 +1,18 @@
-import React, {ChangeEventHandler, MouseEventHandler, useContext} from 'react';
-import {ThemeContext} from '../../context';
+import React, {ChangeEventHandler, Context, MouseEventHandler, useContext} from 'react';
+
 import {Constant} from '../../evaluator/constants/Constant';
+import {IThemeContext, ThemeContext} from '../../contextIndex';
 
 type Props = {
   me: Constant,
 }
 
-function ConstantComp(props: Props): JSX.Element {
-  const {treeState, setTreeState} = useContext(ThemeContext);
+export class ConstantComp extends React.Component<Props, any> {
+  // const {treeState, setTreeState} = useContext(ThemeContext);
+  static contextType: Context<IThemeContext> = ThemeContext;
 
-  const removeHandler: MouseEventHandler<HTMLButtonElement> = (event) => {
+  removeHandler: MouseEventHandler<HTMLButtonElement> = (event) => {
+    const {treeState, setTreeState} = this.context as any;
     // ToDo: Remove
     console.warn('remove not implemented yet');
 
@@ -17,26 +20,33 @@ function ConstantComp(props: Props): JSX.Element {
     setTreeState(copy);
   };
 
-  const changeHandler: ChangeEventHandler<HTMLSelectElement> = (event) => {
-    props.me.setValue(event.target.value === 'true');
+  changeHandler: ChangeEventHandler<HTMLSelectElement> = (event) => {
+    const {treeState, setTreeState} = this.context as any;
+    this.props.me.setValue(event.target.value === 'true');
 
     const copy = Object.assign(Object.create(Object.getPrototypeOf(treeState)), treeState);
     setTreeState(copy);
   };
 
-  const constSelector = (
-    <select name="constant" defaultValue={String(props.me.evaluate())} onChange={changeHandler} className="form-select" style={{ display: "inline-block", width: "auto"}}>
+  private readonly constSelector: JSX.Element = (
+    <select name="constant" defaultValue={String(this.props.me.evaluate())} onChange={this.changeHandler}
+            className="form-select"
+            style={{display: "inline-block", width: "auto"}}>
       <option value="true">true</option>
       <option value="false">false</option>
     </select>
   );
 
-  return (
-    <span>
-      <button onClick={removeHandler} className="btn btn-danger btn-sm">x</button>
-      {constSelector}
+  render() {
+    // @ts-ignore
+    console.log(this.context);
+    return (
+      <span>
+      <button onClick={this.removeHandler} className="btn btn-danger btn-sm">x</button>
+        {this.constSelector}
     </span>
-  );
+    );
+  }
 }
 
 export default ConstantComp;
