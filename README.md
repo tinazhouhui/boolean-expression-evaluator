@@ -1,5 +1,16 @@
 # Boolean expression evaluator
 
+## to start
+```shell
+npm install
+npm start
+```
+
+## to test
+```shell
+npm test
+```
+
 ## Design decisions
 ### Two trees
 - one tree to represent the nodes that hold the methods to evaluate - evaluator tree
