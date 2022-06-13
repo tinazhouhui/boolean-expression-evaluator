@@ -1,5 +1,5 @@
 import {Node} from '../Node';
-import ConstantComp from '../../components/constants/ConstantComp';
+import ConstantComp from '../../components/tree/constants/ConstantComp';
 
 export class Constant extends Node {
   constructor(protected value: boolean = true) {

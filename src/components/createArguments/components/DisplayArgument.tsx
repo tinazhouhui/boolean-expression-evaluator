@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Argument} from '../../evaluator/constants/Argument';
+import {Argument} from '../../../evaluator/constants/Argument';
 
 interface IProps {
   argument: Argument;

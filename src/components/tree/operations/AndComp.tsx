@@ -1,5 +1,5 @@
 import React from 'react';
-import {And} from '../../evaluator/operations/And';
+import {And} from '../../../evaluator/operations/And';
 import NodeComp from '../NodeComp';
 
 interface IProps {

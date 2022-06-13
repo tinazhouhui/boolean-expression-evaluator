@@ -1,5 +1,5 @@
 import React from 'react';
-import {Or} from '../../evaluator/operations/Or';
+import {Or} from '../../../evaluator/operations/Or';
 import NodeComp from '../NodeComp';
 
 interface IProps {

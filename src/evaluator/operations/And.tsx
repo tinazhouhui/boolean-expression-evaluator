@@ -1,5 +1,5 @@
 import {Operation} from './Operation';
-import AndComp from '../../components/operations/AndComp';
+import AndComp from '../../components/tree/operations/AndComp';
 
 export class And extends Operation {
   evaluate() {

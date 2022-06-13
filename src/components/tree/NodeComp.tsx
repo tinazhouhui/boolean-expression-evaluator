@@ -1,10 +1,10 @@
 import React, {Component, Context, MouseEventHandler} from 'react';
-import {Or} from '../evaluator/operations/Or';
-import {ITreeContext, TreeContext} from '../context';
-import stateReducer from '../stateReducer';
-import {And} from '../evaluator/operations/And';
-import {Constant} from '../evaluator/constants/Constant';
-import {Argument} from '../evaluator/constants/Argument';
+import {Or} from '../../evaluator/operations/Or';
+import {ITreeContext, TreeContext} from '../../context';
+import stateReducer from '../../stateReducer';
+import {And} from '../../evaluator/operations/And';
+import {Constant} from '../../evaluator/constants/Constant';
+import {Argument} from '../../evaluator/constants/Argument';
 
 type Props<T> = T & {
   me: And | Or | Constant | Argument,

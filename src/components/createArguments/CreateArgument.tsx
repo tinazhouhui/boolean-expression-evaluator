@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {IArgument} from '../../App';
-import AllArguments from './AllArguments';
-import AddArgumentForm from './AddArgumentForm';
+import AllArguments from './components/AllArguments';
+import AddArgumentForm from './components/AddArgumentForm';
 import {Argument} from '../../evaluator/constants/Argument';
 
 interface IProps {

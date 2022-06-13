@@ -1,6 +1,6 @@
 import React from "react";
 
-import Tree from './components/Tree';
+import Tree from './components/tree/Tree';
 import {Node} from './evaluator/Node';
 import {TreeContext} from './context';
 import {Undefined} from './evaluator/Undefined';

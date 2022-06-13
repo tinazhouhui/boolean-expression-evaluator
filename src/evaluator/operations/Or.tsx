@@ -1,5 +1,5 @@
 import {Operation} from './Operation';
-import OrComp from '../../components/operations/OrComp';
+import OrComp from '../../components/tree/operations/OrComp';
 
 export class Or extends Operation {
   evaluate() {

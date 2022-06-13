@@ -1,4 +1,4 @@
-import ArgumentComp from '../../components/constants/ArgumentComp';
+import ArgumentComp from '../../components/tree/constants/ArgumentComp';
 import {Node} from '../Node';
 
 export class Argument extends Node {

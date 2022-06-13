@@ -1,5 +1,5 @@
 import {Node} from './Node';
-import AddNode from '../components/AddNode';
+import AddNode from '../components/tree/AddNode';
 
 export class Undefined extends Node {
   evaluate(): boolean {

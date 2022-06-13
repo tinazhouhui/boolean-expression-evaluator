@@ -1,8 +1,8 @@
 import React, {ChangeEventHandler, Context} from 'react';
-import {Argument} from '../../evaluator/constants/Argument';
-import {ITreeContext, TreeContext} from '../../context';
-import {Node} from '../../evaluator/Node';
-import stateReducer from '../../stateReducer';
+import {Argument} from '../../../evaluator/constants/Argument';
+import {ITreeContext, TreeContext} from '../../../context';
+import {Node} from '../../../evaluator/Node';
+import stateReducer from '../../../stateReducer';
 import NodeComp from '../NodeComp';
 
 interface IProps {

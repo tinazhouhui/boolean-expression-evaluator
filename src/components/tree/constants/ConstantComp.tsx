@@ -1,7 +1,7 @@
 import React, {ChangeEventHandler, Context} from 'react';
 
-import {Constant} from '../../evaluator/constants/Constant';
-import {ITreeContext, TreeContext} from '../../context';
+import {Constant} from '../../../evaluator/constants/Constant';
+import {ITreeContext, TreeContext} from '../../../context';
 import NodeComp from '../NodeComp';
 
 type Props = {

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import {Node} from '../evaluator/Node';
-import {ITreeContext, TreeContext} from '../context';
+import {Node} from '../../evaluator/Node';
+import {ITreeContext, TreeContext} from '../../context';
 
 class Tree extends Component<{}, {}> {
   static contextType = TreeContext;
