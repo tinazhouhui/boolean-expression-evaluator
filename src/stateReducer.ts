@@ -2,7 +2,11 @@ import {Operation} from './evaluator/operations/Operation';
 import {Node} from './evaluator/Node';
 import {Undefined} from './evaluator/Undefined';
 
-export default function (me: Node, treeState: Node, setTreeState: (treeState: {tree: Node}) => void, newNode: Node = new Undefined()) {
+export type TreeState = {
+  tree: Node,
+};
+
+export default function (me: Node, treeState: Node, setTreeState: (treeState: TreeState) => void, newNode: Node = new Undefined()) {
   const parent = me.getParent();
   // operation replacement for AND and OR
   if (parent instanceof Operation) {
