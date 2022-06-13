@@ -1,22 +1,13 @@
 # Boolean expression evaluator
 
-## Assumptions
-- can only add to the tree, cannot edit once node was placed, only delete
-- argument names are unique
-
-## Observations
-- AddNode has to be on the leaf of constant
-  - cannot throw an error and catch it otherwise any missing value will result in initial state
-  
-
 ## Design decisions
 ### Two trees
-- one tree to represent the evaluator classes that hold the methods to evaluate
-- a second tree to just render the components based on the real tree
+- one tree to represent the nodes that hold the methods to evaluate - evaluator tree
+- a second tree to just render the components based on the real tree - component tree
 
 benefits 
-- major benefits of then allowing for multiple implementation of the evaluator tree - show a diagram e.g.
-- allows for partial calculation and evaluation
+- major benefits of then allowing for multiple implementation of the evaluator tree - e.g. show a diagram 
+- allows for partial calculation and evaluation 
 
 ### Class components rather than functional
 - started with functional but wanted to use useContext to pass the evaluator tree
@@ -31,3 +22,27 @@ to rerender.
 
 Benefits
 - allows for not traversing through the whole tree
+
+
+## Architecture of trees
+<img src="images/architectire-boolean-evaluator.png"/>
+
+## File structure
+```
+...
+src 
+|_ components # all components 
+  |_ createArguments # components for createArgument section
+  |_ tree # all components needed for component tree
+|_ evaulator # all classes needed for evaluator tree
+```
+
+## Things to improve
+### component tree alignment with evaluator tree
+- for some edge cases the alignment is not perfect which results in bugs like not being able to remove a section or after selecting an operation, nothing happens
+- writing more tests would probably fix that
+
+### Arguments
+- argument names should be unique (not validated)
+- using the same argument twice evaluates correctly but the value is not visually updated
+- edit of value can be done only in the expression rather than in the arguments section
