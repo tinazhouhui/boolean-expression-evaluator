@@ -3,6 +3,7 @@ import React, {ChangeEventHandler, Context} from 'react';
 import {Constant} from '../../../evaluator/constants/Constant';
 import {ITreeContext, TreeContext} from '../../../context';
 import NodeComp from '../NodeComp';
+import ConstSelector from '../ConstSelector';
 
 type Props = {
   me: Constant,
@@ -19,22 +20,10 @@ class ConstantComp extends NodeComp<Props, {}> {
     setTreeState(copy);
   };
 
-  private readonly constSelector: JSX.Element = (
-    <select
-      name="constant"
-      defaultValue={String(this.props.me.evaluate())} onChange={this.changeHandler}
-      className="form-select"
-      style={{display: "inline-block", width: "auto"}}
-    >
-      <option value="true">true</option>
-      <option value="false">false</option>
-    </select>
-  );
-
   render() {
     return <span>
       {this.renderRemove()}
-      {this.constSelector}
+      <ConstSelector defaultValue={String(this.props.me.evaluate())} changeHandler={this.changeHandler}/>
     </span>;
   }
 }
