@@ -3,7 +3,7 @@ import React, {ChangeEventHandler, Context} from 'react';
 import {Constant} from '../../../evaluator/constants/Constant';
 import {ITreeContext, TreeContext} from '../../../context';
 import NodeComp from '../NodeComp';
-import ConstSelector from '../ConstSelector';
+import ConstSelector from '../../ConstSelector';
 
 type Props = {
   me: Constant,

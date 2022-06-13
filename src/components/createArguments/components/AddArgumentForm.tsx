@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {IArgument} from '../../../App';
 import {Argument} from '../../../evaluator/constants/Argument';
+import ConstSelector from '../../ConstSelector';
 
 interface IProps {
   allArgs: Argument[],
@@ -47,15 +48,7 @@ class AddArgumentForm extends Component<IProps, IState> {
             onChange={this.handeFormChange}
           />
         </label>
-        <select
-          name="value"
-          defaultValue={String(this.state.argument.value)} onChange={this.handeFormChange}
-          className="form-select"
-          style={{display: "inline-block", width: "auto"}}
-        >
-          <option value="true">true</option>
-          <option value="false">false</option>
-        </select>
+        <ConstSelector defaultValue={String(this.state.argument.value)} changeHandler={this.handeFormChange}/>
         <input type="submit" value="submit" className="btn btn-success"/>
       </form>
     );

@@ -8,7 +8,7 @@ interface IProps {
 class ConstSelector extends Component<IProps, {}> {
   render() {
     return <select
-      name="constant"
+      name="value"
       defaultValue={this.props.defaultValue} onChange={this.props.changeHandler}
       className="form-select"
       style={{display: "inline-block", width: "auto"}}
