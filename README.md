@@ -1,5 +1,7 @@
 # Boolean expression evaluator
 
+https://user-images.githubusercontent.com/63497846/173326542-419d322b-4a03-4ffc-9892-9d64bce4b549.mp4
+
 ## to start
 ```shell
 # node --version v16.14.2
