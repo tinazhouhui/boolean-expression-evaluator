@@ -1,6 +1,8 @@
 import {describe, test} from '@jest/globals';
 import {Constant} from '../../../evaluator/constants/Constant';
 
+jest.mock('../../../components/ComponentFactory', () => jest.fn());
+
 describe('Constant', () => {
   test('Should evaluate AND to falsy if given false and true', () => {
     const falseConst = new Constant(false);

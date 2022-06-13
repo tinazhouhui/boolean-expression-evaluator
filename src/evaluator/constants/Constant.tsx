@@ -1,5 +1,5 @@
 import {Node} from '../Node';
-import ConstantComp from '../../components/tree/constants/ConstantComp';
+import ComponentFactory from '../../components/ComponentFactory';
 
 export class Constant extends Node {
   constructor(protected value: boolean = true) {
@@ -22,6 +22,6 @@ export class Constant extends Node {
   }
 
   createComponent(): JSX.Element {
-    return <ConstantComp me={this} />
+    return ComponentFactory.createConstant(this);
   }
 }

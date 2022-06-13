@@ -2,6 +2,8 @@ import {describe, test} from '@jest/globals';
 import {And} from '../../../evaluator/operations/And';
 import {Constant} from '../../../evaluator/constants/Constant';
 
+jest.mock('../../../components/ComponentFactory', () => jest.fn());
+
 describe('AND operation', () => {
   const falseConst = new Constant(false);
   const trueConst = new Constant(true);

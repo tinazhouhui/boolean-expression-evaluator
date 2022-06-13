@@ -1,5 +1,5 @@
 import {Operation} from './Operation';
-import AndComp from '../../components/tree/operations/AndComp';
+import ComponentFactory from '../../components/ComponentFactory';
 
 export class And extends Operation {
   evaluate() {
@@ -11,6 +11,6 @@ export class And extends Operation {
   }
 
   createComponent(): JSX.Element {
-    return <AndComp left={this.left.createComponent()} right={this.right.createComponent()} me={this}/>;
+    return ComponentFactory.createAnd(this);
   }
 }

@@ -2,6 +2,8 @@ import {describe, test} from '@jest/globals';
 import {Or} from '../../../evaluator/operations/Or';
 import {Constant} from '../../../evaluator/constants/Constant';
 
+jest.mock('../../../components/ComponentFactory', () => jest.fn());
+
 describe('Or operation', () => {
   const falseConst = new Constant(false);
   const trueConst = new Constant(true);

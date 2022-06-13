@@ -2,7 +2,7 @@ import {Operation} from './evaluator/operations/Operation';
 import {Node} from './evaluator/Node';
 import {Undefined} from './evaluator/Undefined';
 
-export default function (me: Node, treeState: {}, setTreeState: Function, newNode: Node = new Undefined()) {
+export default function (me: Node, treeState: Node, setTreeState: (treeState: {tree: Node}) => void, newNode: Node = new Undefined()) {
   const parent = me.getParent();
   // operation replacement for AND and OR
   if (parent instanceof Operation) {
@@ -15,16 +15,22 @@ export default function (me: Node, treeState: {}, setTreeState: Function, newNod
     }
 
     if (Object.is(parent, treeState)) {
-      setTreeState({tree: parent});
+      setTreeState({
+        tree: parent
+      });
       return;
     }
 
     // https://stackoverflow.com/questions/41474986/how-to-clone-a-javascript-es6-class-instance
     const copy = Object.assign(Object.create(Object.getPrototypeOf(treeState)), treeState);
-    setTreeState({tree: copy});
+    setTreeState({
+      tree: copy
+    });
   } else {
     // operation replacement for Const and Arg
-    setTreeState({tree: newNode});
+    setTreeState({
+      tree: newNode
+    });
     return;
   }
 }
