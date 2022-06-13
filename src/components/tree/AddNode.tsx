@@ -8,6 +8,7 @@ import {Or} from '../../evaluator/operations/Or';
 import {ITreeContext, TreeContext} from '../../context';
 import {Undefined} from '../../evaluator/Undefined';
 import stateReducer from '../../stateReducer';
+import Selector from './Selector';
 
 interface IProps {
   me: Node,
@@ -44,24 +45,6 @@ class AddNode extends Component<IProps, IState> {
     stateReducer(this.props.me, treeState, setTreeState, newNode);
   };
 
-  selector: JSX.Element = (
-    <>
-      <button onClick={() => this.setState({isFolded: false})} className="btn btn-danger btn-sm">x</button>
-      <select defaultValue="select" onChange={this.handler} className="form-select"
-              style={{display: "inline-block", width: "auto"}}>
-        <option disabled={true} value="select">Select...</option>
-        <optgroup label="Values">
-          <option value={CONSTANT}>Constant</option>
-          <option value={ARGUMENT}>Argument</option>
-        </optgroup>
-        <optgroup label="Operations">
-          <option value={AND}>And</option>
-          <option value={OR}>Or</option>
-        </optgroup>
-      </select>
-    </>
-  );
-
   handleClick = () => {
     this.setState({isFolded: true});
   };
@@ -69,7 +52,11 @@ class AddNode extends Component<IProps, IState> {
   render() {
     return (
       <span>
-      {this.state.isFolded ? this.selector :
+      {this.state.isFolded ?
+        <>
+          <button onClick={() => this.setState({isFolded: false})} className="btn btn-danger btn-sm">x</button>
+          <Selector handler={this.handler}/>
+        </> :
         <button onClick={this.handleClick} className="btn btn-primary btn-sm">+</button>}
     </span>
     );
