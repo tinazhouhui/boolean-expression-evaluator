@@ -1,13 +1,13 @@
 import React, {ChangeEventHandler, Component} from 'react';
-import {AND, ARGUMENT, CONSTANT, OR} from '../../constants';
-import {Node} from '../../evaluator/Node';
-import {Constant} from '../../evaluator/constants/Constant';
-import {Argument} from '../../evaluator/constants/Argument';
-import {And} from '../../evaluator/operations/And';
-import {Or} from '../../evaluator/operations/Or';
-import {ITreeContext, TreeContext} from '../../context';
-import {Undefined} from '../../evaluator/Undefined';
-import stateReducer from '../../stateReducer';
+import {AND, ARGUMENT, CONSTANT, OR} from '../../../constants';
+import {Node} from '../../../evaluator/Node';
+import {Constant} from '../../../evaluator/constants/Constant';
+import {Argument} from '../../../evaluator/constants/Argument';
+import {And} from '../../../evaluator/operations/And';
+import {Or} from '../../../evaluator/operations/Or';
+import {ITreeContext, TreeContext} from '../../../context';
+import {Undefined} from '../../../evaluator/Undefined';
+import stateReducer from '../../../stateReducer';
 import Selector from './Selector';
 
 interface IProps {

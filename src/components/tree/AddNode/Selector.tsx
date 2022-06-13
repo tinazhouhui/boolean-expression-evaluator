@@ -1,5 +1,5 @@
 import React, {ChangeEventHandler, Component} from 'react';
-import {AND, ARGUMENT, CONSTANT, OR} from '../../constants';
+import {AND, ARGUMENT, CONSTANT, OR} from '../../../constants';
 
 interface IProps {
   handler: ChangeEventHandler<HTMLSelectElement>

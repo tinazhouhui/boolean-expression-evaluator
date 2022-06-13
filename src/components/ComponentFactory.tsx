@@ -5,6 +5,8 @@ import {Or} from '../evaluator/operations/Or';
 import {And} from '../evaluator/operations/And';
 import AndComp from './tree/operations/AndComp';
 
+// needed to separate components' creation from nodes as it was crashing the tests
+
 export default class ComponentFactory {
   static createConstant(instance: Constant): JSX.Element {
     return <ConstantComp me={instance}/>;
