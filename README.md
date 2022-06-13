@@ -2,6 +2,7 @@
 
 ## to start
 ```shell
+# node --version v16.14.2
 npm install
 npm start
 ```
