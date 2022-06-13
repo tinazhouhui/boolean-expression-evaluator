@@ -9,17 +9,19 @@ interface IProps {
   handleNewArg: (newArg: IArgument) => void,
 }
 
-class CreateArgument extends Component<IProps, any> {
+class CreateArgument extends Component<IProps, {}> {
 
   state = {
     showForm: false,
   };
 
   render() {
-    const numberOfArgs = this.props.allArgs.length
+    const numberOfArgs = this.props.allArgs.length;
     return <>
       {numberOfArgs > 0 && <AllArguments allArguments={this.props.allArgs}/>}
-      {this.state.showForm ? <AddArgumentForm{...this.props}/> : <button onClick={() => this.setState({showForm: true})} className="btn btn-secondary my-3">Add a new argument</button>}
+      {this.state.showForm ? <AddArgumentForm{...this.props}/> :
+        <button onClick={() => this.setState({showForm: true})} className="btn btn-secondary my-3">Add a new
+          argument</button>}
     </>;
   }
 }

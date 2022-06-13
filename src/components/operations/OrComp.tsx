@@ -1,26 +1,18 @@
-import React, {Component, Context, MouseEventHandler} from 'react';
-import {IThemeContext, ThemeContext} from '../../contextIndex';
-import stateReducer from '../../stateReducer';
+import React from 'react';
 import {Or} from '../../evaluator/operations/Or';
+import NodeComp from '../NodeComp';
 
 interface IProps {
   left: JSX.Element,
   right: JSX.Element,
-  me: Or
+  me: Or,
 }
 
-class OrComp extends Component<IProps, any> {
-  static contextType: Context<IThemeContext> = ThemeContext;
-
-  removeHandler: MouseEventHandler<HTMLButtonElement> = () => {
-    const {treeState, setTreeState} = this.context as IThemeContext;
-    stateReducer(this.props.me, treeState, setTreeState);
-  };
-
+class OrComp extends NodeComp<IProps, {}> {
   render() {
     const {left, right} = this.props;
     return <>
-      <button onClick={this.removeHandler} className="btn btn-danger btn-sm">x</button>
+      {this.renderRemove()}
       ( {left} OR {right} )
     </>;
   }

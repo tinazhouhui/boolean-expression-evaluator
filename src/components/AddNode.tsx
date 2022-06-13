@@ -5,7 +5,7 @@ import {Constant} from '../evaluator/constants/Constant';
 import {Argument} from '../evaluator/constants/Argument';
 import {And} from '../evaluator/operations/And';
 import {Or} from '../evaluator/operations/Or';
-import {IThemeContext, ThemeContext} from '../contextIndex';
+import {ITreeContext, TreeContext} from '../context';
 import {Undefined} from '../evaluator/Undefined';
 import stateReducer from '../stateReducer';
 
@@ -13,18 +13,18 @@ interface IProps {
   me: Node,
 }
 
-interface State {
+interface IState {
   isFolded: boolean;
 }
 
-class AddNode extends Component<IProps, State> {
-  static contextType = ThemeContext;
+class AddNode extends Component<IProps, IState> {
+  static contextType = TreeContext;
   state = {
     isFolded: false
   };
 
   handler: ChangeEventHandler<HTMLSelectElement> = (event) => {
-    const {treeState, setTreeState} = this.context as IThemeContext;
+    const {treeState, setTreeState} = this.context as ITreeContext;
     let newNode: Node;
 
     switch (event.target.value) {
@@ -43,7 +43,6 @@ class AddNode extends Component<IProps, State> {
 
     stateReducer(this.props.me, treeState, setTreeState, newNode);
   };
-
 
   selector: JSX.Element = (
     <>

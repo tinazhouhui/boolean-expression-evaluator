@@ -40,12 +40,19 @@ class AddArgumentForm extends Component<IProps, IState> {
       <form className="my-3" onSubmit={this.handleSubmit}>
         <label className="form-label">
           Argument name:
-          <input className="form-control" type="text" name="name" value={this.state.argument.name}
-                 onChange={this.handeFormChange}/>
+           <input
+            className="form-control"
+            type="text" name="name"
+            value={this.state.argument.name}
+            onChange={this.handeFormChange}
+          />
         </label>
-        <select name="value" defaultValue={String(this.state.argument.value)} onChange={this.handeFormChange}
-                className="form-select"
-                style={{display: "inline-block", width: "auto"}}>
+        <select
+          name="value"
+          defaultValue={String(this.state.argument.value)} onChange={this.handeFormChange}
+          className="form-select"
+          style={{display: "inline-block", width: "auto"}}
+        >
           <option value="true">true</option>
           <option value="false">false</option>
         </select>

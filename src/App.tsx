@@ -1,8 +1,8 @@
 import React from "react";
 
-import Tree from './Tree';
+import Tree from './components/Tree';
 import {Node} from './evaluator/Node';
-import {ThemeContext} from './contextIndex';
+import {TreeContext} from './context';
 import {Undefined} from './evaluator/Undefined';
 import CreateArgument from './components/createArguments/CreateArgument';
 import {Argument} from './evaluator/constants/Argument';
@@ -53,7 +53,7 @@ class App extends React.Component<any, State> {
     const setState = (value: any): any => {
       return this.setState.bind(this)(value);
     };
-    return <ThemeContext.Provider value={{
+    return <TreeContext.Provider value={{
       treeState: this.state.tree,
       setTreeState: setState,
       allArguments: this.state.allArguments
@@ -63,7 +63,7 @@ class App extends React.Component<any, State> {
         handleNewArg={this.handleNewArg}
       />
       <Tree/>
-    </ThemeContext.Provider>;
+    </TreeContext.Provider>;
   }
 }
 

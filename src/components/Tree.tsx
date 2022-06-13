@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import {Node} from './evaluator/Node';
-import {ThemeContext} from './contextIndex';
+import {Node} from '../evaluator/Node';
+import {ITreeContext, TreeContext} from '../context';
 
-class Tree extends Component<any, any> {
-  static contextType = ThemeContext;
+class Tree extends Component<{}, {}> {
+  static contextType = TreeContext;
 
   evalOutput(node: Node): JSX.Element {
     try {
@@ -23,7 +23,7 @@ class Tree extends Component<any, any> {
   }
 
   render() {
-    const {treeState} = this.context as any;
+    const {treeState} = this.context as ITreeContext;
     return <div className="my-3">
       <h2>Evaluator</h2>
       <p>

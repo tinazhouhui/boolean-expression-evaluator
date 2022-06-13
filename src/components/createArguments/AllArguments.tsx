@@ -4,12 +4,10 @@ import DisplayArgument from './DisplayArgument';
 
 
 interface IProps {
-  allArguments: Argument[]
+   allArguments: Argument[];
 }
 
-class AllArguments extends Component<IProps, any> {
-
-
+class AllArguments extends Component<IProps, {}> {
   render() {
     return (
       <div className="my-3">
