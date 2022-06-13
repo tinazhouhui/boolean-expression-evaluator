@@ -1,43 +1,30 @@
 import React, {ChangeEventHandler, Context} from 'react';
-import {Argument} from '../../../evaluator/constants/Argument';
 import {ITreeContext, TreeContext} from '../../../context';
-import {Node} from '../../../evaluator/Node';
-import stateReducer from '../../../stateReducer';
 import NodeComp from '../NodeComp';
+import ConstSelector from '../../ConstSelector';
+import {Argument} from '../../../evaluator/constants/Argument';
 
-interface IProps {
-  me: Node,
+type Props = {
+  me: Argument,
 }
 
-class ArgumentComp extends NodeComp<IProps, {}> {
+class ArgumentComp extends NodeComp<Props, {}> {
   static contextType: Context<ITreeContext> = TreeContext;
 
   changeHandler: ChangeEventHandler<HTMLSelectElement> = (event) => {
-    const {treeState, setTreeState, allArguments} = this.context as ITreeContext;
-    const newNode: Argument = allArguments.filter((arg) => {
-      return arg.getName() === event.target.value;
-    })[0];
+    const {treeState, setTreeState} = this.context as ITreeContext;
+    this.props.me.setValue(event.target.value === 'true');
 
-    stateReducer(this.props.me, treeState, setTreeState, newNode);
+    const copy = Object.assign(Object.create(Object.getPrototypeOf(treeState)), treeState);
+    setTreeState(copy);
   };
 
   render() {
-    const {allArguments} = this.context as ITreeContext;
-    return <>
+    return <span>
       {this.renderRemove()}
-      <select
-        defaultValue="select"
-        onChange={this.changeHandler}
-          className="form-select"
-          style={{display: "inline-block", width: "auto"}}
-        >
-        <option disabled={true} value="select">Select...</option>
-        {allArguments.map((arg: Argument) => {
-          const name = arg.getName();
-          return <option key={name} value={name}>{name}</option>;
-        })}
-      </select>
-    </>;
+      {this.props.me.getName()}
+      <ConstSelector defaultValue={String(this.props.me.evaluate())} changeHandler={this.changeHandler}/>
+    </span>;
   }
 }
 

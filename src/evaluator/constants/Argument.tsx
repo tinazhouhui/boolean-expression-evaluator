@@ -1,5 +1,6 @@
-import ArgumentComp from '../../components/tree/constants/ArgumentComp';
+import ArgumentSelector from '../../components/tree/constants/ArgumentSelector';
 import {Node} from '../Node';
+import ArgumentComp from '../../components/tree/constants/ArgumentComp';
 
 export class Argument extends Node {
   constructor(protected value: boolean | null = null, private readonly name: string = '') {
@@ -30,6 +31,6 @@ export class Argument extends Node {
   }
 
   createComponent(): JSX.Element {
-    return this.value === null ? <ArgumentComp me={this}/> : <>{this.toString()}</>;
+    return this.value === null ? <ArgumentSelector me={this}/> : <ArgumentComp me={this}/>;
   }
 }
