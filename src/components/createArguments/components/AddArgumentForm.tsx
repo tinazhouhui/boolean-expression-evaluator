@@ -25,8 +25,8 @@ class AddArgumentForm extends Component<IProps, IState> {
     this.props.handleNewArg(this.state.argument);
   };
 
-  handeFormChange = (event: any) => {
-    this.setState((prevState: any) => {
+  handeFormChange: React.ChangeEventHandler<HTMLSelectElement | HTMLInputElement> = (event) => {
+    this.setState((prevState: IState) => {
       return {
         argument: {
           ...prevState.argument,
