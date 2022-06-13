@@ -12,33 +12,19 @@ export interface IArgument {
   value: boolean,
 }
 
-type State = {
+interface IState {
   tree: Node,
   allArguments: Argument[]
 }
 
-class App extends React.Component<any, State> {
-  constructor(props: any) {
+class App extends React.Component<{}, IState> {
+  constructor(props: {}) {
     super(props);
     this.state = {
       tree: new Undefined(),
       allArguments: []
     };
   }
-
-  // handleChange = (name: string, value: string) => {
-  //   this.setState((prevState) => {
-  //     return {
-  //       ...prevState,
-  //       allArguments: prevState.allArguments.map((arg: Argument) => {
-  //         if (arg.getName() === name) {
-  //           arg.setValue(Boolean(value));
-  //         }
-  //         return arg;
-  //       })
-  //     };
-  //   });
-  // };
 
   handleNewArg = (newArg: IArgument) => {
     this.setState((prevState) => {
@@ -50,9 +36,7 @@ class App extends React.Component<any, State> {
   };
 
   render() {
-    const setState = (value: any): any => {
-      return this.setState.bind(this)(value);
-    };
+    const setState = this.setState.bind(this);
     return <TreeContext.Provider value={{
       treeState: this.state.tree,
       setTreeState: setState,

@@ -5,11 +5,11 @@ import {ITreeContext, TreeContext} from '../../../context';
 import NodeComp from '../NodeComp';
 import ConstSelector from '../../ConstSelector';
 
-type Props = {
+interface IProps {
   me: Constant,
 }
 
-class ConstantComp extends NodeComp<Props, {}> {
+class ConstantComp extends NodeComp<IProps, {}> {
   static contextType: Context<ITreeContext> = TreeContext;
 
   changeHandler: ChangeEventHandler<HTMLSelectElement> = (event) => {

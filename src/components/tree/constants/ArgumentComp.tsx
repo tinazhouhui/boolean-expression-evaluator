@@ -4,11 +4,11 @@ import NodeComp from '../NodeComp';
 import ConstSelector from '../../ConstSelector';
 import {Argument} from '../../../evaluator/constants/Argument';
 
-type Props = {
+interface IProps {
   me: Argument,
 }
 
-class ArgumentComp extends NodeComp<Props, {}> {
+class ArgumentComp extends NodeComp<IProps, {}> {
   static contextType: Context<ITreeContext> = TreeContext;
 
   changeHandler: ChangeEventHandler<HTMLSelectElement> = (event) => {
